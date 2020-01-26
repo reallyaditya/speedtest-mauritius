@@ -132,7 +132,7 @@ def main(server_list):
         json.dump(realtime_dict, realtime_json, indent=4)
 
     # Sync files to GitHub repo
-    # sync_to_github()
+    sync_to_github()
 
 
 if __name__ == "__main__":

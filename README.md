@@ -16,18 +16,18 @@ It is expected to be in the following format :
 ```json
 // file: all-servers.json
 {
-    LION : <SpeedtestResult>,
-    MARS: <SpeedtestResult>,
-    SAFE1:<SpeedtestResult>,
-    SAFE2:<SpeedtestResult>,
-    SAFE3:<SpeedtestResult>
+    "LION": "<SpeedtestResult>",
+    "SAFE1": "<SpeedtestResult>",
+    "SAFE2": "<SpeedtestResult>",
+    "SAFE3": "<SpeedtestResult>",
+    "MARS": "<SpeedtestResult>"
 }
 // Where Speedtest result has the following signature
 Interface SpeedtestResult {
-    timestamp: '',
-    upload: '',
-    download: '',
-    ping: ''
+    "timestamp": "",
+    "upload": "",
+    "download": "",
+    "ping": ""
 }
 ```
 
@@ -60,13 +60,14 @@ npm run build
 
 The JSON results obtained are synced to a GitHub repo and then fetched to display the latter. To set up the Python script to push to your GitHub repo, follow the instructions below:
 
-- Change the speed test server codes to the ones you want in `speedtest.py`
+- Change the speed test server codes to the ones you want in `/data/servers.json`
 
-```python
-server_dict = {'LION': {'reunion': 24492, 'madagascar': 7755},
-               'SAFE': {'india': 24682, 'south_africa': 1285, 'malaysia':12544},
-               'MARS': {'rodrigues': 27454}
-               }
+```json
+{
+  "LION": { "madagascar": 7755 },
+  "SAFE": { "india": 24682, "south_africa": 1285, "malaysia": 12544 },
+  "MARS": { "rodrigues": 27454 }
+}
 ```
 
 - You can get a list of nearby speed test servers and their codes by running the command below:
@@ -75,10 +76,12 @@ server_dict = {'LION': {'reunion': 24492, 'madagascar': 7755},
 speedtest --servers
 ```
 
-- Having cloned the repo using SSH, change the path of the project directory accordingly in the `speedtest.py` script.
+- Having cloned the repo using SSH, change the path of the project directory accordingly in the `config.json` script.
 
-```python
-77 os.chdir('absolute_path_to_project_directory')
+```json
+{
+  "projectPath": "{insert path here}"
+}
 ```
 
 - Just run the `speedtest.py` script to do a speed test and push the results to your GitHub repo.
